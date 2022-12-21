@@ -50,10 +50,13 @@ class SimpleModel(nn.Module):
       return x
 # model
 model = SimpleModel()
-model.load_state_dict(torch.load("./model_2021_11_19.pth"))
+#model.load_state_dict(torch.load("./model_2021_11_19.pth"))
+model.load_state_dict(torch.load("./model_2022_12_22.pth"))
+
 # optimizer
 optimizer = optim.SGD(params=model.parameters(), lr=0.001, momentum=0.9)
 loss_fn = nn.CrossEntropyLoss()
+
 # train
 for epoch in range(2):
   with tqdm(train_loader, desc="EPOCH: {}".format(epoch)) as train_bar:

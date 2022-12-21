@@ -1,4 +1,4 @@
-# coding=UTF-8
+ # coding=UTF-8
 """
   3. model
 
@@ -60,7 +60,7 @@ def eg_3_0_1():
   from torch import nn
   class SimpleModel(nn.Module):
     def __init__(self):
-        # super(SimpleModel, self).__init__()
+        super(SimpleModel, self).__init__()
         self.conv1 = nn.Conv2d(in_channels=1, out_channels=3, kernel_size=(1, 1))
         self.relu = nn.ReLU(inplace=True)
 
@@ -121,14 +121,16 @@ def eg_3_2():
         x = self.flatten(x)
         print("[after flatten] x.shape: {}".format(x.shape))  # torch.Size([1, 3920])
         x = self.linear(x)
+        print("[after linear]x.shape:{}".format(x.shape))
         x = self.relu(x)
+        print("[after reLU]x.shape:{}".format(x.shape))
         return x
 
   model = SimpleModel()
   x = train_dataset[0][0]  # torch.Size([1, 28, 28])
   x = x[None, ...]  # torch.Size([1, 1, 28, 28])
   model(x)
-
+  print("x:{}".format(x.shape))
 
 def eg_3_3():
   """
@@ -223,7 +225,7 @@ if __name__ == "__main__":
   # eg_3_0_0()
   # eg_3_0_1()
   # eg_3_1()
-  # eg_3_2()
+  eg_3_2()
   # eg_3_3()
   # eg_3_4_0()
   # eg_3_4_1()
